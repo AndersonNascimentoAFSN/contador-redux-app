@@ -1,16 +1,30 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { decrementar, encrementar } from '../Redux/actions';
 
-export default class Contador extends Component {
+class Contador extends Component {
   render() {
+    const { numero, encrementa, decrementa } = this.props;
     return (
       <div>
-        <span>0</span>
+        <span>{numero}</span>
         <div>
-          <button type="button">Incrementar</button>
-          <button type="button">descrementar</button>
+          <button onClick={encrementa} type="button">Incrementar</button>
+          <button onClick={decrementa} type="button">descrementar</button>
         </div>
       </div>
     )
   }
 }
 
+const mapStateToProps = (state) => ({
+  numero: state.counter.numero
+})
+
+// mapeando função para a propriedade encrementa na qual o contador receberá via props
+const mapDispatchToProps = (dispatch) => ({
+  encrementa: () => dispatch(encrementar()),
+  decrementa: () => dispatch(decrementar()),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps )(Contador);

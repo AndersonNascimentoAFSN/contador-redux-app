@@ -1,4 +1,4 @@
-import { ENCREMENTA, DECREMENTA } from '../actions/index'
+import { ENCREMENTAR, DECREMENTAR } from '../actions/index'
 const INITIAL_STATE = {
     numero: 0,
 }
@@ -7,10 +7,10 @@ const INITIAL_STATE = {
 const counterReduce = (state = INITIAL_STATE, action) => {
     
     switch(action.type) {
-        case ENCREMENTA:
+        case ENCREMENTAR:
             return {...state, numero: state.numero + 1 };
 
-        case DECREMENTA:
+        case DECREMENTAR:
             return {...state, numero: state.numero - 1 };  
         default:
             return state;     
